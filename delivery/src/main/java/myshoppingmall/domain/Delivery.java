@@ -92,11 +92,18 @@ public class Delivery  {
 
     public static void startDelivery(OrderPlaced orderPlaced){
 
-        /** Example 1:  new item 
+        /** Example 1:  new item    */
         Delivery delivery = new Delivery();
+
+        delivery.setOrderId(orderPlaced.getId());
+        delivery.setAddress(orderPlaced.getAddress());
+        delivery.setProductId(orderPlaced.getProductId());
+        delivery.setProductName(orderPlaced.getProductName());
+        delivery.setStatus("Delivery Start");
+
         repository().save(delivery);
 
-        */
+     
 
         /** Example 2:  finding and process
         
@@ -119,16 +126,16 @@ public class Delivery  {
 
         */
 
-        /** Example 2:  finding and process
+        /** Example 2:  finding and process */
         
-        repository().findById(orderCanceled.get???()).ifPresent(delivery->{
+        repository().findByOrderId(orderCanceled.getId()).ifPresent(delivery->{
             
-            delivery // do something
+            delivery.setStatus("Delivery Canceled"); // do something
             repository().save(delivery);
 
 
          });
-        */
+        
 
         
     }
